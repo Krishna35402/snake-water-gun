@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Snack Water Gun Game</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: linear-gradient(45deg, #833ab4, #fd1d1d, #fcb045);
+            font-family: Arial, sans-serif;
+            margin: 0;
+            color: #000000;
+        }
+        .game-container {
+            margin: 20px auto;
+            padding: 20px;
+            border: 2px solid #000;
+            width: 300px;
+            background: linear-gradient(15deg, #833ab4, #fd1d1d, #fcb045);
+            border-radius: 10px;
+            box-shadow: 1px 1px 8px rgb(255, 255, 255);
+        }
+        .game-container:hover{
+            border: 1px outset rgb(255, 255, 255);
+            width: 320px;
+            background: linear-gradient(35deg, #833ab4, #fd1d1d, #fcb045);
+        }
+        .choices {
+            margin: 15px 0;
+        }
+        button {
+            padding: 10px 20px;
+            margin: 5px;
+            border: none;
+            border-radius: 5px;
+            background: linear-gradient(-75deg, #833ab4, #fd1d1d, #fcb045);
+            color: black;
+            cursor: pointer;
+        }
+        button:hover {
+            background: linear-gradient(45deg, #833ab4, #fd1d1d, #fcb045);
+            color: rgb(255, 255, 255);
+            border-bottom: 1px double rgb(0, 0, 0);
+            box-shadow: 1px 1px 8px rgb(255, 255, 255);
+        }
+        .result {
+            margin-top: 20px;
+            font-size: 1.5em;
+            background: linear-gradient(30deg, #833ab4, #fd1d1d, #fcb045);;
+        }
+        .result:hover {
+            box-shadow: 1px 1px 8px rgb(255, 255, 255);
+            border-bottom: 1px double rgb(0, 0, 0);
+            border-top: 2px dotted rgb(0, 0, 0);
+            border-radius: 10%;
+        }
+    </style>
+</head>
+<body>
+    <div class="game-container">
+        <h1>Snack Water Gun</h1>
+        <p>Choose your option:</p>
+        <div class="choices">
+            <button onclick="playGame('snack')" id="snack1">Snack</button>
+            <button onclick="playGame('water')" id="water1">Water</button>
+            <button onclick="playGame('gun')" id="gun1">Gun</button>
+        </div>
+        <div class="result" id="result"></div>
+    </div>
+
+    <script>
+        function playGame(playerChoice) {
+            const choices = ['snack', 'water', 'gun'];
+            const computerChoice = choices[Math.floor(Math.random() * choices.length)];
+            let result = '';
+
+            if (playerChoice === computerChoice) {
+                result = `It's a tie! Both chose ${playerChoice}.`;
+            } else if (
+                (playerChoice === 'snack' && computerChoice === 'water') ||
+                (playerChoice === 'water' && computerChoice === 'gun') ||
+                (playerChoice === 'gun' && computerChoice === 'snack')
+            ) {
+                result = `You win! ${playerChoice} beats ${computerChoice}.`;
+            } else {
+                result = `You lose! ${computerChoice} beats ${playerChoice}.`;
+            }
+
+            document.getElementById('result').textContent = result;
+
+            document.getElementById('snack1').addEventListener('click', function() {
+            const newWindow = window.open('', '_blank', 'width=600,height=400');
+            newWindow.document.write(`
+                <!DOCTYPE html>
+                <html lang="en">
+                <head>
+                    <meta charset="UTF-8">
+                    <meta name="viewport" content="width=device-width, initial-scale=1.0", >
+                    <title>GIF Page</title>
+                </head>
+                <body>
+                    <h1>Choose:- Snack</h1>
+                    <img src="C:/Users/win/Desktop/snack water gun/SNAKE.gif" alt="Loading GIF" style="max-width: 100%; height: auto;">
+                </body>
+                </html>
+            `);
+        });
+
+        document.getElementById('water1').addEventListener('click', function() {
+            const newWindow = window.open('', '_blank', 'width=600,height=400');
+            newWindow.document.write(`
+                <!DOCTYPE html>
+                <html lang="en">
+                <head>
+                    <meta charset="UTF-8">
+                    <meta name="viewport" content="width=device-width, initial-scale=1.0", background: linear-gradient(30deg, #833ab4, #fd1d1d, #fcb045)>
+                    <title>GIF Page</title>
+                </head>
+                <body>
+                    <h1>Choose:- Water</h1>
+                    <img src="C:/Users/win/Desktop/snack water gun/WATER.gif" alt="Loading GIF" style="max-width: 100%; height: auto;">
+                </body>
+                </html>
+            `);
+        });
+
+        document.getElementById('gun1').addEventListener('click', function() {
+            const newWindow = window.open('', '_blank', 'width=600,height=400');
+            newWindow.document.write(`
+                <!DOCTYPE html>
+                <html lang="en">
+                <head>
+                    <meta charset="UTF-8">
+                    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                    <title>GIF Page</title>
+                </head>
+                <body>
+                    <h1>choose:- Gun</h1>
+                    <img src="C:/Users/win/Desktop/snack water gun/GUN.gif" alt="Loading GIF" style="max-width: 100%; height: auto;">
+                </body>
+                </html>
+            `);
+        });
+        }
+    </script>
+</body>
+</html>
